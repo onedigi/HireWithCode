@@ -3,7 +3,7 @@
 欢迎来到 `HireWithCode` 项目！这是一个专为技术面试者设计的真实项目挑战。目前，这个仓库刚刚起步，没有任何代码——只有待实现的功能（TODOs）。你的任务是将这些TODOs转变为实际的代码，提交你的Pull Request（PR）就是你面试的一部分挑战。
 
 ## 产品功能 TODOs
-产品分为 4 个步骤的页面，
+产品是一个 Web 网站（PC端、移动端兼容），分为 4 个步骤的页面：
 - [ ] **欢迎语**：Logo + 一句话欢迎语（垂直水平居中，2 秒后自动进入下一页 *面试引导*）`欢迎来到 Onedigi 线上面试环节，期待你的加入！` [logo](./logo.png) 
 - [ ] **面试引导**：Markdown 文案展示（介绍面试的流程和说明）[页面文案 markdown](https://raw.githubusercontent.com/onedigi/HireWithCode/main/README.md)
 - [ ] **接受挑战**：表单，`input`(用户输入自己的 github id) 、`input`(邮箱)、`submit buttion`(接受挑战)
