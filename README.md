@@ -4,8 +4,8 @@
 
 ## 产品功能 TODOs
 产品分为 4 个步骤的页面，
-- [ ] **欢迎语**：一句话欢迎语（垂直水平居中）
-- [ ] **面试引导**：Markdown 文案展示（介绍面试的流程和说明）[页面文案 markdown]()
+- [ ] **欢迎语**：Logo + 一句话欢迎语（垂直水平居中）`欢迎来到 Onedigi 线上面试环节，期待你的加入！` [logo](./logo.png)
+- [ ] **面试引导**：Markdown 文案展示（介绍面试的流程和说明）[页面文案 markdown](https://raw.githubusercontent.com/onedigi/HireWithCode/main/README.md)
 - [ ] **接受挑战**：表单，`input`(用户输入自己的 github id) 、`input`(邮箱)、`submit buttion`(接受挑战)
 - [ ] **完成挑战**：表单，`input`(github 仓库 url)、`input`(Vercel 在线体验地址)、`submit buttion`(提交作品)
 
