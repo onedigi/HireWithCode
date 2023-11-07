@@ -21,14 +21,7 @@ const Wrapper = styled.div`
 
         &::before {
             content: '';
-            height: 5rem;
-        }
-    }
-
-    @media screen and (max-width: 460px) {
-        &::before {
-            content: '';
-            height: 3rem;
+            height: 10rem;
         }
     }
 `
