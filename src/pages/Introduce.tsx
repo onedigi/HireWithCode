@@ -1,5 +1,4 @@
-import RMD from 'react-markdown'
-import gfm from 'remark-gfm'
+import MD from 'markdown-to-jsx'
 import { rawMD } from '../assets/rawMD'
 import TypeArea from '../components/TypeArea'
 import { GlobalContext } from '../App'
@@ -18,7 +17,7 @@ const Introduce = () => {
 
     return (
         <TypeArea>
-            <RMD children={rawMD} remarkPlugins={[gfm]} />
+            <MD>{rawMD}</MD>
         </TypeArea>
     )
 }

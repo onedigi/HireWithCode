@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Welcome from './pages/Welcome'
 import Introduce from './pages/Introduce'
 import SideMenu from './components/SideMenu'
@@ -23,7 +23,7 @@ function App() {
         /* 对象注入处，将需要注入的对象填写在value内 */
         <GlobalProvider value={{ currentPath, setCurrentPath }}>
             {currentPath === '/welcome' ? null : <SideMenu />}
-            <BrowserRouter>
+            <HashRouter>
                 <Routes>
                     <Route path='/welcome' element={<Welcome />} />
                     <Route path='/introduce' element={<Introduce />} />
@@ -33,7 +33,7 @@ function App() {
                     <Route path='/' element={<Navigate replace to='/welcome' />} />
                     <Route path='*' element={<Navigate replace to='/welcome' />} />
                 </Routes>
-            </BrowserRouter>
+            </HashRouter>
         </GlobalProvider>
     )
 }

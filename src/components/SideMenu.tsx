@@ -121,7 +121,7 @@ const SideMenu = () => {
                 <MenuItem
                     className={`${currentPath === '/welcome' ? 'text-underline' : ''}`}
                     onClick={() => {
-                        if (currentPath !== '/welcome') window.location.href = '/welcome'
+                        if (currentPath !== '/welcome') window.location.href = '#/welcome'
                     }}
                 >
                     欢迎语
@@ -129,7 +129,7 @@ const SideMenu = () => {
                 <MenuItem
                     className={`${currentPath === '/introduce' ? 'text-underline' : ''}`}
                     onClick={() => {
-                        if (currentPath !== '/introduce') window.location.href = '/introduce'
+                        if (currentPath !== '/introduce') window.location.href = '#/introduce'
                     }}
                 >
                     面试引导
@@ -137,7 +137,7 @@ const SideMenu = () => {
                 <MenuItem
                     className={`${currentPath === '/take_challenge' ? 'text-underline' : ''}`}
                     onClick={() => {
-                        if (currentPath !== 'take_challenge') window.location.href = '/take_challenge'
+                        if (currentPath !== 'take_challenge') window.location.href = '#/take_challenge'
                     }}
                 >
                     接受挑战
@@ -145,7 +145,7 @@ const SideMenu = () => {
                 <MenuItem
                     className={`${currentPath === '/finish_challenge' ? 'text-underline' : ''}`}
                     onClick={() => {
-                        if (currentPath !== '/finish_challenge') window.location.href = '/finish_challenge'
+                        if (currentPath !== '/finish_challenge') window.location.href = '#/finish_challenge'
                     }}
                 >
                     完成挑战
