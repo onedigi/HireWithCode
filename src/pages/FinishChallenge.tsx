@@ -88,6 +88,12 @@ const FinishChallenge = () => {
                 onSubmit={async evt => {
                     evt.preventDefault()
 
+                    setGithubURLErr(false)
+                    setVercelURLErr(false)
+
+                    if (!validateURL(formData.github_url)) setGithubURLErr(true)
+                    if (!validateURL(formData.vercel_url)) setVercelURLErr(true)
+
                     if (formData.github_url === '' || formData.vercel_url === '' || githubURLErr || vercelURLErr) {
                         console.log('不满足提交条件，return')
 

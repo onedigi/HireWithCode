@@ -90,6 +90,12 @@ const TakeChallenge = () => {
                 onSubmit={async evt => {
                     evt.preventDefault()
 
+                    setGithubIDErr(false)
+                    setEmailErr(false)
+
+                    if (!validateGithubID(formData.github_id)) setGithubIDErr(true)
+                    if (!validateEmail(formData.email)) setEmailErr(true)
+
                     if (formData.github_id === '' || formData.email === '' || githubIDErr || emailErr) {
                         console.log('不满足提交条件，return')
 
