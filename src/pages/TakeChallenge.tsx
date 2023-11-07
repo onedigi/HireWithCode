@@ -8,12 +8,21 @@ const Container = styled.div`
     margin-top: 10rem;
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 840px) {
+        margin-top: 0;
+    }
 `
+
 const Text = styled.p`
     font-size: 2.5rem;
     font-weight: bold;
     margin: 0;
     padding: 0;
+
+    @media screen and (max-width: 460px) {
+        font-size: 1.5rem;
+    }
 `
 
 const Input = styled.input`
@@ -32,7 +41,15 @@ const Submit = styled.button`
     width: 20rem;
     border-radius: 1.5rem;
     background-color: #b1c8cd;
-    font-size: 4rem;
+    font-size: 2rem;
+    font-weight: bold;
+
+    @media screen and (max-width: 460px) {
+        font-size: 1rem;
+        height: 5rem;
+        width: 10rem;
+        border-radius: 1rem;
+    }
 `
 
 const TakeChallenge = () => {
@@ -40,7 +57,7 @@ const TakeChallenge = () => {
     const globalContext = useContext(GlobalContext)
     const { setCurrentPath }: any = globalContext
     const [formData, setFormData] = useState({
-        github: '',
+        githubID: '',
         email: ''
     })
 
@@ -61,11 +78,11 @@ const TakeChallenge = () => {
                 <Container>
                     <Text>你的Github ID是？</Text>
                     <Input
-                        value={formData.github}
+                        value={formData.githubID}
                         onChange={evt => {
                             setFormData({
                                 ...formData,
-                                github: evt.target.value
+                                githubID: evt.target.value
                             })
                         }}
                     />
@@ -82,7 +99,7 @@ const TakeChallenge = () => {
                     />
 
                     <SubmitWrapper>
-                        <Submit>提交</Submit>
+                        <Submit>接受挑战</Submit>
                     </SubmitWrapper>
                 </Container>
             </form>

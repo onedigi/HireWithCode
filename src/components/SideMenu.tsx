@@ -3,7 +3,7 @@ import foldImg from '../assets/fold.svg'
 import { useState, useRef, useContext } from 'react'
 import { GlobalContext } from '../App'
 
-const Container = styled.div`
+const Wrapper = styled.div`
     background-color: rgba(114, 169, 170, 0.2);
     width: 20rem;
     height: 100%;
@@ -13,6 +13,12 @@ const Container = styled.div`
     z-index: 999;
     display: flex;
     justify-content: center;
+
+    @media screen and (max-width: 840px) {
+        height: 5rem;
+        width: 100%;
+        background-color: transparent;
+    }
 `
 
 const FoldBtn = styled.div`
@@ -26,6 +32,10 @@ const FoldBtn = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 840px) {
+        display: none;
+    }
 `
 
 const FoldBtnImg = styled.img`
@@ -33,9 +43,15 @@ const FoldBtnImg = styled.img`
     height: 1.5rem;
 `
 
-const TypeArea = styled.div`
+const Container = styled.div`
     width: 15rem;
     margin: 8rem 0 8rem 0;
+
+    @media screen and (max-width: 840px) {
+        width: 100%;
+        display: flex;
+        margin: 0.5rem 0;
+    }
 `
 
 const MenuItem = styled.div`
@@ -51,6 +67,16 @@ const MenuItem = styled.div`
     &:hover {
         cursor: pointer;
         background-color: rgba(114, 169, 170, 0.3);
+    }
+
+    @media screen and (max-width: 840px) {
+        &:hover {
+            background-color: transparent;
+        }
+    }
+
+    @media screen and (max-width: 460px) {
+        font-size: 1rem;
     }
 `
 
@@ -80,21 +106,18 @@ const SideMenu = () => {
     const { currentPath }: any = globalContext
 
     return (
-        <Container className={foldHandler(isFirstTime.current, isFold)}>
-            <FoldBtn>
-                <FoldBtnImg
-                    className={foldImghandler(isFirstTime.current, isFold)}
-                    src={foldImg}
-                    alt='foldImg'
-                    onClick={() => {
-                        setIsFold(!isFold)
-                        //只有触发过一次这个handler才加css动画类
-                        isFirstTime.current = false
-                    }}
-                />
+        <Wrapper className={foldHandler(isFirstTime.current, isFold)}>
+            <FoldBtn
+                onClick={() => {
+                    setIsFold(!isFold)
+                    //只有触发过一次这个handler才加css动画类
+                    isFirstTime.current = false
+                }}
+            >
+                <FoldBtnImg className={foldImghandler(isFirstTime.current, isFold)} src={foldImg} alt='foldImg' />
             </FoldBtn>
 
-            <TypeArea>
+            <Container>
                 <MenuItem
                     className={`${currentPath === '/welcome' ? 'text-underline' : ''}`}
                     onClick={() => {
@@ -127,8 +150,8 @@ const SideMenu = () => {
                 >
                     完成挑战
                 </MenuItem>
-            </TypeArea>
-        </Container>
+            </Container>
+        </Wrapper>
     )
 }
 

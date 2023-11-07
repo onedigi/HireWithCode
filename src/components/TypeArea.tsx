@@ -5,11 +5,41 @@ const Wrapper = styled.div`
     width: 100vw;
     display: flex;
     justify-content: center;
+
+    &::before {
+        content: '';
+        width: 25rem;
+    }
+
+    &::after {
+        content: '';
+        width: 5rem;
+    }
+
+    @media screen and (max-width: 840px) {
+        flex-direction: column;
+
+        &::before {
+            content: '';
+            height: 5rem;
+        }
+    }
+
+    @media screen and (max-width: 460px) {
+        &::before {
+            content: '';
+            height: 3rem;
+        }
+    }
 `
 
 const Container = styled.div`
-    width: 78.75rem;
-    height: 62.5rem;
+    height: 100vh;
+    flex: 1;
+
+    @media screen and (max-width: 840px) {
+        padding: 0% 2rem;
+    }
 `
 
 /**

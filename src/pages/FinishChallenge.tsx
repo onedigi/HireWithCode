@@ -1,12 +1,64 @@
 import TypeArea from '../components/TypeArea'
 import { GlobalContext } from '../App'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import styled from 'styled-components'
+
+const Container = styled.div`
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 840px) {
+        margin-top: 0;
+    }
+`
+const Text = styled.p`
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+
+    @media screen and (max-width: 460px) {
+        font-size: 1.5rem;
+    }
+`
+
+const Input = styled.input`
+    height: 3rem;
+    font-size: 2rem;
+    margin-bottom: 5rem;
+`
+
+const SubmitWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
+const Submit = styled.button`
+    height: 10rem;
+    width: 20rem;
+    border-radius: 1.5rem;
+    background-color: #b1c8cd;
+    font-size: 2rem;
+    font-weight: bold;
+
+    @media screen and (max-width: 460px) {
+        font-size: 1rem;
+        height: 5rem;
+        width: 10rem;
+        border-radius: 1rem;
+    }
+`
 
 const FinishChallenge = () => {
     const location = useLocation().pathname
     const globalContext = useContext(GlobalContext)
     const { setCurrentPath }: any = globalContext
+    const [formData, setFormData] = useState({
+        githubURL: '',
+        vercelURL: ''
+    })
 
     //防止子组件更新时同时去更新父组件
     useEffect(() => {
@@ -15,7 +67,41 @@ const FinishChallenge = () => {
 
     return (
         <TypeArea>
-            <div>1</div>
+            <form
+                onSubmit={evt => {
+                    evt.preventDefault()
+
+                    console.log('formData', formData)
+                }}
+            >
+                <Container>
+                    <Text>你的github仓库url是？</Text>
+                    <Input
+                        value={formData.githubURL}
+                        onChange={evt => {
+                            setFormData({
+                                ...formData,
+                                githubURL: evt.target.value
+                            })
+                        }}
+                    />
+
+                    <Text>你的Vercel在线体验地址是？</Text>
+                    <Input
+                        value={formData.vercelURL}
+                        onChange={evt => {
+                            setFormData({
+                                ...formData,
+                                vercelURL: evt.target.value
+                            })
+                        }}
+                    />
+
+                    <SubmitWrapper>
+                        <Submit>提交作品</Submit>
+                    </SubmitWrapper>
+                </Container>
+            </form>
         </TypeArea>
     )
 }

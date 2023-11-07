@@ -51,23 +51,18 @@ const Container = styled.div`
     height: 100vh;
     position: relative;
     overflow: hidden;
-
-    @media (max-width: 768px) {
-    }
 `
 
 const Logo = styled.img`
-    width: 6.25rem;
-    margin: 3.125rem auto auto 6.25rem;
+    width: 6.25vw;
+    left: 6.26vw;
+    top: 3.125vw;
     position: absolute;
-
-    @media (max-width: 768px) {
-    }
 `
 
 const Hill1 = styled.img`
     position: absolute;
-    height: 60rem;
+    height: 60vw;
     width: 100%;
     bottom: 0;
     z-index: 0;
@@ -79,7 +74,7 @@ const Hill1 = styled.img`
 
 const Hill2 = styled.img`
     position: absolute;
-    height: 60rem;
+    height: 60vw;
     left: 0;
     bottom: 0;
     z-index: 1;
@@ -91,7 +86,7 @@ const Hill2 = styled.img`
 
 const Hill3 = styled.img`
     position: absolute;
-    height: 60rem;
+    height: 60vw;
     right: 0;
     z-index: 2;
     bottom: 0;
@@ -103,7 +98,7 @@ const Hill3 = styled.img`
 
 const Hill4 = styled.img`
     position: absolute;
-    height: 60rem;
+    height: 60vw;
     left: 0;
     bottom: 0;
     z-index: 3;
@@ -115,7 +110,7 @@ const Hill4 = styled.img`
 
 const Hill5 = styled.img`
     position: absolute;
-    height: 60rem;
+    height: 60vw;
     right: 0;
     bottom: 0;
     z-index: 4;
@@ -128,14 +123,18 @@ const Hill5 = styled.img`
 const Plant = styled.img`
     position: absolute;
     width: 100%;
-    height: 80rem;
+    height: 80vw;
     z-index: 5;
     bottom: 0;
+
+    animation: ${toBottom} 0.3s linear;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
 `
 
 const Leaf = styled.img`
     position: absolute;
-    height: 60rem;
+    height: 60vw;
     z-index: 6;
     top: 0;
     right: 0;
@@ -145,7 +144,7 @@ const Leaf = styled.img`
     animation-delay: 0.5s;
 `
 
-const Text = styled.h1`
+const Text = styled.p`
     text-align: center;
     white-space: nowrap;
     top: 30%;
@@ -153,6 +152,8 @@ const Text = styled.h1`
     transform: translate(-50%, -50%);
     position: absolute;
     opacity: 0;
+    font-size: 4vw;
+    font-weight: bold;
 
     animation: ${textShow} 0.3s linear;
     animation-fill-mode: forwards;

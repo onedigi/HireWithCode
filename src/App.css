@@ -1,3 +1,7 @@
+body {
+    min-width: 316px;
+}
+
 @keyframes rotate-animation-left {
     0% {
         transform: rotateY(180deg);
