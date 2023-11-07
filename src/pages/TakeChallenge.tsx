@@ -57,7 +57,7 @@ const TakeChallenge = () => {
     const globalContext = useContext(GlobalContext)
     const { setCurrentPath }: any = globalContext
     const [formData, setFormData] = useState({
-        githubID: '',
+        github_id: '',
         email: ''
     })
 
@@ -78,11 +78,11 @@ const TakeChallenge = () => {
                 <Container>
                     <Text>你的Github ID是？</Text>
                     <Input
-                        value={formData.githubID}
+                        value={formData.github_id}
                         onChange={evt => {
                             setFormData({
                                 ...formData,
-                                githubID: evt.target.value
+                                github_id: evt.target.value
                             })
                         }}
                     />

@@ -56,8 +56,8 @@ const FinishChallenge = () => {
     const globalContext = useContext(GlobalContext)
     const { setCurrentPath }: any = globalContext
     const [formData, setFormData] = useState({
-        githubURL: '',
-        vercelURL: ''
+        github_url: '',
+        vercel_url: ''
     })
 
     //防止子组件更新时同时去更新父组件
@@ -77,22 +77,22 @@ const FinishChallenge = () => {
                 <Container>
                     <Text>你的github仓库url是？</Text>
                     <Input
-                        value={formData.githubURL}
+                        value={formData.github_url}
                         onChange={evt => {
                             setFormData({
                                 ...formData,
-                                githubURL: evt.target.value
+                                github_url: evt.target.value
                             })
                         }}
                     />
 
                     <Text>你的Vercel在线体验地址是？</Text>
                     <Input
-                        value={formData.vercelURL}
+                        value={formData.vercel_url}
                         onChange={evt => {
                             setFormData({
                                 ...formData,
-                                vercelURL: evt.target.value
+                                vercel_url: evt.target.value
                             })
                         }}
                     />
