@@ -39,6 +39,7 @@ const Container = styled.div`
 
     @media screen and (max-width: 840px) {
         padding: 0% 2rem;
+        flex: auto;
     }
 `
 
