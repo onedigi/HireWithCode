@@ -1,12 +1,9 @@
-import RMD from 'react-markdown'
-import gfm from 'remark-gfm'
-import { rawMD } from '../assets/rawMD'
 import TypeArea from '../components/TypeArea'
 import { GlobalContext } from '../App'
 import { useContext, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const Introduce = () => {
+const FinishChallenge = () => {
     const location = useLocation().pathname
     const globalContext = useContext(GlobalContext)
     const { setCurrentPath }: any = globalContext
@@ -18,9 +15,9 @@ const Introduce = () => {
 
     return (
         <TypeArea>
-            <RMD children={rawMD} remarkPlugins={[gfm]} />
+            <div>1</div>
         </TypeArea>
     )
 }
 
-export default Introduce
+export default FinishChallenge

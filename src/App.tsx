@@ -4,6 +4,8 @@ import Welcome from './pages/Welcome'
 import Introduce from './pages/Introduce'
 import SideMenu from './components/SideMenu'
 import { useState, createContext } from 'react'
+import TakeChallenge from './pages/TakeChallenge'
+import FinishChallenge from './pages/FinishChallenge'
 
 //全局上下文
 export const GlobalContext = createContext(undefined)
@@ -25,6 +27,8 @@ function App() {
                 <Routes>
                     <Route path='/welcome' element={<Welcome />} />
                     <Route path='/introduce' element={<Introduce />} />
+                    <Route path='/take_challenge' element={<TakeChallenge />} />
+                    <Route path='/finish_challenge' element={<FinishChallenge />} />
 
                     <Route path='/' element={<Navigate replace to='/welcome' />} />
                     <Route path='*' element={<Navigate replace to='/welcome' />} />

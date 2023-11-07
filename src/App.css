@@ -49,3 +49,8 @@
 .move-animation-right-class {
     animation: move-animation-right 0.5s forwards;
 }
+
+.text-underline {
+    text-decoration: underline;
+    text-underline-offset: 0.5rem;
+}

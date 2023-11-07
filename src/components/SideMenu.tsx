@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import foldImg from '../assets/fold.svg'
-import { useState, useRef } from 'react'
+import { useState, useRef, useContext } from 'react'
+import { GlobalContext } from '../App'
 
 const Container = styled.div`
     background-color: rgba(114, 169, 170, 0.2);
@@ -10,6 +11,8 @@ const Container = styled.div`
     top: 0;
     left: 0;
     z-index: 999;
+    display: flex;
+    justify-content: center;
 `
 
 const FoldBtn = styled.div`
@@ -28,6 +31,27 @@ const FoldBtn = styled.div`
 const FoldBtnImg = styled.img`
     width: 1.5rem;
     height: 1.5rem;
+`
+
+const TypeArea = styled.div`
+    width: 15rem;
+    margin: 8rem 0 8rem 0;
+`
+
+const MenuItem = styled.div`
+    height: 4rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(114, 169, 170, 0.3);
+    }
 `
 
 //根据是否第一次进入网站决定要返回的css类名
@@ -51,6 +75,9 @@ const foldHandler = (isFirstTime: boolean, isfold: boolean) => {
 const SideMenu = () => {
     const [isFold, setIsFold] = useState(false)
     const isFirstTime = useRef(true)
+    const globalContext = useContext(GlobalContext)
+
+    const { currentPath }: any = globalContext
 
     return (
         <Container className={foldHandler(isFirstTime.current, isFold)}>
@@ -66,13 +93,41 @@ const SideMenu = () => {
                     }}
                 />
             </FoldBtn>
-            <button
-                onClick={() => {
-                    window.location.href = '/'
-                }}
-            >
-                aaa
-            </button>
+
+            <TypeArea>
+                <MenuItem
+                    className={`${currentPath === '/welcome' ? 'text-underline' : ''}`}
+                    onClick={() => {
+                        if (currentPath !== '/welcome') window.location.href = '/welcome'
+                    }}
+                >
+                    欢迎语
+                </MenuItem>
+                <MenuItem
+                    className={`${currentPath === '/introduce' ? 'text-underline' : ''}`}
+                    onClick={() => {
+                        if (currentPath !== '/introduce') window.location.href = '/introduce'
+                    }}
+                >
+                    面试引导
+                </MenuItem>
+                <MenuItem
+                    className={`${currentPath === '/take_challenge' ? 'text-underline' : ''}`}
+                    onClick={() => {
+                        if (currentPath !== 'take_challenge') window.location.href = '/take_challenge'
+                    }}
+                >
+                    接受挑战
+                </MenuItem>
+                <MenuItem
+                    className={`${currentPath === '/finish_challenge' ? 'text-underline' : ''}`}
+                    onClick={() => {
+                        if (currentPath !== '/finish_challenge') window.location.href = '/finish_challenge'
+                    }}
+                >
+                    完成挑战
+                </MenuItem>
+            </TypeArea>
         </Container>
     )
 }
