@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { supabase } from '../clients/supabase'
+import { validateEmail, validateGithubID } from '../utils/validate'
 
 const Container = styled.div`
     margin-top: 10rem;
@@ -26,10 +27,24 @@ const Text = styled.p`
     }
 `
 
+const ErrMsg = styled.p`
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    color: red;
+
+    @media screen and (max-width: 460px) {
+        font-size: 1.5rem;
+    }
+`
+
 const Input = styled.input`
     height: 3rem;
+    width: 100%;
     font-size: 2rem;
     margin-bottom: 5rem;
+    background-color: transparent;
 `
 
 const SubmitWrapper = styled.div`
@@ -61,6 +76,8 @@ const TakeChallenge = () => {
         github_id: '',
         email: ''
     })
+    const [githubIDErr, setGithubIDErr] = useState(false)
+    const [emailErr, setEmailErr] = useState(false)
 
     //防止子组件更新时同时去更新父组件
     useEffect(() => {
@@ -73,18 +90,29 @@ const TakeChallenge = () => {
                 onSubmit={async evt => {
                     evt.preventDefault()
 
-                    console.log('formData', formData)
+                    if (formData.github_id === '' || formData.email === '' || githubIDErr || emailErr) {
+                        console.log('不满足提交条件，return')
+
+                        return
+                    }
 
                     const { data, error } = await supabase.from('take_challenge').insert([formData]).select()
-
                     if (error) console.log('error', error)
+
                     console.log('data', data)
                 }}
             >
                 <Container>
-                    <Text>你的GitHub ID是？</Text>
+                    {!githubIDErr ? <Text>你的GitHub ID是？</Text> : <ErrMsg>GitHub ID格式错啦！</ErrMsg>}
                     <Input
                         value={formData.github_id}
+                        onBlur={evt => {
+                            setGithubIDErr(false)
+                            if (!validateGithubID(evt.currentTarget.value)) setGithubIDErr(true)
+                        }}
+                        onFocus={() => {
+                            setGithubIDErr(false)
+                        }}
                         onChange={evt => {
                             setFormData({
                                 ...formData,
@@ -93,9 +121,16 @@ const TakeChallenge = () => {
                         }}
                     />
 
-                    <Text>你的邮箱是？</Text>
+                    {!emailErr ? <Text>你的邮箱是？</Text> : <ErrMsg>邮箱格式错啦！</ErrMsg>}
                     <Input
                         value={formData.email}
+                        onBlur={evt => {
+                            setEmailErr(false)
+                            if (!validateEmail(evt.currentTarget.value)) setEmailErr(true)
+                        }}
+                        onFocus={() => {
+                            setEmailErr(false)
+                        }}
                         onChange={evt => {
                             setFormData({
                                 ...formData,
@@ -103,7 +138,6 @@ const TakeChallenge = () => {
                             })
                         }}
                     />
-
                     <SubmitWrapper>
                         <Submit>接受挑战</Submit>
                     </SubmitWrapper>

@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { supabase } from '../clients/supabase'
+import { validateURL } from '../utils/validate'
 
 const Container = styled.div`
     margin-top: 10rem;
@@ -25,8 +26,21 @@ const Text = styled.p`
     }
 `
 
+const ErrMsg = styled.p`
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    color: red;
+
+    @media screen and (max-width: 460px) {
+        font-size: 1.5rem;
+    }
+`
+
 const Input = styled.input`
     height: 3rem;
+    width: 100%;
     font-size: 2rem;
     margin-bottom: 5rem;
 `
@@ -60,6 +74,8 @@ const FinishChallenge = () => {
         github_url: '',
         vercel_url: ''
     })
+    const [githubURLErr, setGithubURLErr] = useState(false)
+    const [vercelURLErr, setVercelURLErr] = useState(false)
 
     //防止子组件更新时同时去更新父组件
     useEffect(() => {
@@ -72,18 +88,29 @@ const FinishChallenge = () => {
                 onSubmit={async evt => {
                     evt.preventDefault()
 
-                    console.log('formData', formData)
+                    if (formData.github_url === '' || formData.vercel_url === '' || githubURLErr || vercelURLErr) {
+                        console.log('不满足提交条件，return')
+
+                        return
+                    }
 
                     const { data, error } = await supabase.from('finish_challenge').insert([formData]).select()
-
                     if (error) console.log('error', error)
+
                     console.log('data', data)
                 }}
             >
                 <Container>
-                    <Text>你的GitHub仓库URL是？</Text>
+                    {!githubURLErr ? <Text>你的GitHub仓库URL是？</Text> : <ErrMsg>GitHub仓库URL格式错啦！</ErrMsg>}
                     <Input
                         value={formData.github_url}
+                        onBlur={evt => {
+                            setGithubURLErr(false)
+                            if (!validateURL(evt.currentTarget.value)) setGithubURLErr(true)
+                        }}
+                        onFocus={() => {
+                            setGithubURLErr(false)
+                        }}
                         onChange={evt => {
                             setFormData({
                                 ...formData,
@@ -91,10 +118,16 @@ const FinishChallenge = () => {
                             })
                         }}
                     />
-
-                    <Text>你的Vercel在线体验地址是？</Text>
+                    {!vercelURLErr ? <Text>你的Vercel在线体验地址是？</Text> : <ErrMsg>Vercel地址格式错啦！</ErrMsg>}
                     <Input
                         value={formData.vercel_url}
+                        onBlur={evt => {
+                            setVercelURLErr(false)
+                            if (!validateURL(evt.currentTarget.value)) setVercelURLErr(true)
+                        }}
+                        onFocus={() => {
+                            setVercelURLErr(false)
+                        }}
                         onChange={evt => {
                             setFormData({
                                 ...formData,
