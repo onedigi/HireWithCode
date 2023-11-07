@@ -82,7 +82,7 @@ const TakeChallenge = () => {
                 }}
             >
                 <Container>
-                    <Text>你的Github ID是？</Text>
+                    <Text>你的GitHub ID是？</Text>
                     <Input
                         value={formData.github_id}
                         onChange={evt => {

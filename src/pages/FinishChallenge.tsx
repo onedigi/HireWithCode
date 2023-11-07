@@ -81,7 +81,7 @@ const FinishChallenge = () => {
                 }}
             >
                 <Container>
-                    <Text>你的github仓库url是？</Text>
+                    <Text>你的GitHub仓库URL是？</Text>
                     <Input
                         value={formData.github_url}
                         onChange={evt => {
