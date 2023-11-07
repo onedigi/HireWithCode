@@ -1,30 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Welcome from './pages/Welcome'
+import Introduce from './pages/Introduce'
+import SideMenu from './components/SideMenu'
+import { useState, createContext } from 'react'
+
+//全局上下文
+export const GlobalContext = createContext(undefined)
+
+//上下文wrapper，为包裹内的组件提供所注入的对象
+const GlobalProvider = ({ children, value }: any) => {
+    return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
+}
 
 function App() {
-    const [count, setCount] = useState(0)
+    //记录当前在哪个路由
+    const [currentPath, setCurrentPath] = useState('')
 
     return (
-        <>
-            <div>
-                <a href='https://vitejs.dev' target='_blank'>
-                    <img src={viteLogo} className='logo' alt='Vite logo' />
-                </a>
-                <a href='https://react.dev' target='_blank'>
-                    <img src={reactLogo} className='logo react' alt='React logo' />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className='card'>
-                <button onClick={() => setCount(count => count + 1)}>count is {count}</button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-        </>
+        /* 对象注入处，将需要注入的对象填写在value内 */
+        <GlobalProvider value={{ currentPath, setCurrentPath }}>
+            {currentPath === '/welcome' ? null : <SideMenu />}
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/welcome' element={<Welcome />} />
+                    <Route path='/introduce' element={<Introduce />} />
+
+                    <Route path='/' element={<Navigate replace to='/welcome' />} />
+                    <Route path='*' element={<Navigate replace to='/welcome' />} />
+                </Routes>
+            </BrowserRouter>
+        </GlobalProvider>
     )
 }
 
