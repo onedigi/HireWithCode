@@ -41,7 +41,7 @@ const ErrMsg = styled.p`
 
 const Input = styled.input`
     height: 3rem;
-    width: 100%;
+    width: 96%;
     font-size: 2rem;
     margin-bottom: 5rem;
     background-color: transparent;
