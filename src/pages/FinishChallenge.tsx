@@ -3,6 +3,7 @@ import { GlobalContext } from '../App'
 import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
+import { supabase } from '../clients/supabase'
 
 const Container = styled.div`
     margin-top: 10rem;
@@ -68,10 +69,15 @@ const FinishChallenge = () => {
     return (
         <TypeArea>
             <form
-                onSubmit={evt => {
+                onSubmit={async evt => {
                     evt.preventDefault()
 
                     console.log('formData', formData)
+
+                    const { data, error } = await supabase.from('finish_challenge').insert([formData]).select()
+
+                    if (error) console.log('error', error)
+                    console.log('data', data)
                 }}
             >
                 <Container>
