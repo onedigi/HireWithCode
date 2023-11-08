@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎语</title>
+    <link rel="icon" href="./images/logo.png">
+    <link rel="stylesheet" href="./css/public.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="title">
+            <p>欢迎来到 Onedigi 线上面试环节，期待你的加入！</p>
+            <img class="logo" src="./images/logo.png" alt="logo">
+        </div>
+        <p class="timeBox"><span id="time">2</span>&nbsp;秒后跳转到面试引导</p>
+    </div>
+    <script>
+        var second = 2;
+        var time = document.getElementById("time");
+        function show() {
+            second--;
+            if (second == 0) {
+                location.href = "guide.html";
+            }
+            time.innerHTML = second + "";
+
+        }
+        setInterval(show, 1000);
+    </script>
+</body>
+
+</html>
