@@ -151,14 +151,14 @@ const SideMenu = () => {
                     完成挑战
                 </MenuItem>
 
-                <MenuItem
+                {/* <MenuItem
                     className={`${currentPath === '/show_data' ? 'text-underline' : ''}`}
                     onClick={() => {
                         if (currentPath !== '/show_data') window.location.href = '#/show_data'
                     }}
                 >
                     *查看数据
-                </MenuItem>
+                </MenuItem> */}
             </Container>
         </Wrapper>
     )

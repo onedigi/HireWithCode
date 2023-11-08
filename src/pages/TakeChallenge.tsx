@@ -78,6 +78,7 @@ const TakeChallenge = () => {
     })
     const [githubIDErr, setGithubIDErr] = useState(false)
     const [emailErr, setEmailErr] = useState(false)
+    const [submitBtnText, setSubmitBtnText] = useState('接受挑战')
 
     //防止子组件更新时同时去更新父组件
     useEffect(() => {
@@ -97,13 +98,17 @@ const TakeChallenge = () => {
                     if (!validateEmail(formData.email)) setEmailErr(true)
 
                     if (formData.github_id === '' || formData.email === '' || githubIDErr || emailErr) {
-                        console.log('不满足提交条件，return')
+                        setSubmitBtnText('提交失败')
 
                         return
                     }
 
+                    setSubmitBtnText('提交中...')
+
                     const { data, error } = await supabase.from('take_challenge').insert([formData]).select()
                     if (error) console.log('error', error)
+
+                    if (data) setSubmitBtnText('提交成功')
 
                     console.log('data', data)
                 }}
@@ -118,6 +123,7 @@ const TakeChallenge = () => {
                         }}
                         onFocus={() => {
                             setGithubIDErr(false)
+                            setSubmitBtnText('接受挑战')
                         }}
                         onChange={evt => {
                             setFormData({
@@ -136,6 +142,7 @@ const TakeChallenge = () => {
                         }}
                         onFocus={() => {
                             setEmailErr(false)
+                            setSubmitBtnText('接受挑战')
                         }}
                         onChange={evt => {
                             setFormData({
@@ -145,7 +152,7 @@ const TakeChallenge = () => {
                         }}
                     />
                     <SubmitWrapper>
-                        <Submit>接受挑战</Submit>
+                        <Submit>{submitBtnText}</Submit>
                     </SubmitWrapper>
                 </Container>
             </form>

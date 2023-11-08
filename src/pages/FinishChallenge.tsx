@@ -76,6 +76,7 @@ const FinishChallenge = () => {
     })
     const [githubURLErr, setGithubURLErr] = useState(false)
     const [vercelURLErr, setVercelURLErr] = useState(false)
+    const [submitBtnText, setSubmitBtnText] = useState('提交作品')
 
     //防止子组件更新时同时去更新父组件
     useEffect(() => {
@@ -95,13 +96,17 @@ const FinishChallenge = () => {
                     if (!validateURL(formData.vercel_url)) setVercelURLErr(true)
 
                     if (formData.github_url === '' || formData.vercel_url === '' || githubURLErr || vercelURLErr) {
-                        console.log('不满足提交条件，return')
+                        setSubmitBtnText('提交失败')
 
                         return
                     }
 
+                    setSubmitBtnText('提交中...')
+
                     const { data, error } = await supabase.from('finish_challenge').insert([formData]).select()
                     if (error) console.log('error', error)
+
+                    if (data) setSubmitBtnText('提交成功')
 
                     console.log('data', data)
                 }}
@@ -116,6 +121,7 @@ const FinishChallenge = () => {
                         }}
                         onFocus={() => {
                             setGithubURLErr(false)
+                            setSubmitBtnText('提交作品')
                         }}
                         onChange={evt => {
                             setFormData({
@@ -133,6 +139,7 @@ const FinishChallenge = () => {
                         }}
                         onFocus={() => {
                             setVercelURLErr(false)
+                            setSubmitBtnText('提交作品')
                         }}
                         onChange={evt => {
                             setFormData({
@@ -143,7 +150,7 @@ const FinishChallenge = () => {
                     />
 
                     <SubmitWrapper>
-                        <Submit>提交作品</Submit>
+                        <Submit>{submitBtnText}</Submit>
                     </SubmitWrapper>
                 </Container>
             </form>
