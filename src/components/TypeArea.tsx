@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 
         &::before {
             content: '';
-            height: 10rem;
+            height: 5rem;
         }
     }
 `

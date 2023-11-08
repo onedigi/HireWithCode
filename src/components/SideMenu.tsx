@@ -75,7 +75,7 @@ const MenuItem = styled.div`
         }
     }
 
-    @media screen and (max-width: 460px) {
+    @media screen and (max-width: 560px) {
         font-size: 1rem;
     }
 `
@@ -149,6 +149,15 @@ const SideMenu = () => {
                     }}
                 >
                     完成挑战
+                </MenuItem>
+
+                <MenuItem
+                    className={`${currentPath === '/show_data' ? 'text-underline' : ''}`}
+                    onClick={() => {
+                        if (currentPath !== '/show_data') window.location.href = '#/show_data'
+                    }}
+                >
+                    *查看数据
                 </MenuItem>
             </Container>
         </Wrapper>

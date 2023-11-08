@@ -22,7 +22,7 @@ const Text = styled.p`
     margin: 0;
     padding: 0;
 
-    @media screen and (max-width: 460px) {
+    @media screen and (max-width: 560px) {
         font-size: 1.5rem;
     }
 `
@@ -34,7 +34,7 @@ const ErrMsg = styled.p`
     padding: 0;
     color: red;
 
-    @media screen and (max-width: 460px) {
+    @media screen and (max-width: 560px) {
         font-size: 1.5rem;
     }
 `
@@ -60,7 +60,7 @@ const Submit = styled.button`
     font-size: 2rem;
     font-weight: bold;
 
-    @media screen and (max-width: 460px) {
+    @media screen and (max-width: 560px) {
         font-size: 1rem;
         height: 5rem;
         width: 10rem;
