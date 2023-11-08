@@ -1,18 +1,24 @@
-import TypeArea from '../components/TypeArea'
 import { GlobalContext } from '../App'
 import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { supabase } from '../clients/supabase'
 import { validateEmail, validateGithubID } from '../utils/validate'
+import TypeArea from '../components/TypeArea'
 
-const Container = styled.div`
-    margin-top: 10rem;
+const Wrapper = styled.div`
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
 
-    @media screen and (max-width: 840px) {
-        margin-top: 0;
+const Container = styled.div`
+    width: 60vw;
+
+    @media screen and (max-width: 768px) {
+        width: 75vw;
     }
 `
 
@@ -22,7 +28,7 @@ const Text = styled.p`
     margin: 0;
     padding: 0;
 
-    @media screen and (max-width: 560px) {
+    @media screen and (max-width: 768px) {
         font-size: 1.5rem;
     }
 `
@@ -34,17 +40,22 @@ const ErrMsg = styled.p`
     padding: 0;
     color: red;
 
-    @media screen and (max-width: 560px) {
+    @media screen and (max-width: 768px) {
         font-size: 1.5rem;
     }
 `
 
 const Input = styled.input`
     height: 3rem;
-    width: 96%;
+    width: 100%;
     font-size: 2rem;
     margin-bottom: 5rem;
     background-color: transparent;
+
+    @media screen and (max-width: 768px) {
+        height: 2rem;
+        font-size: 1.5rem;
+    }
 `
 
 const SubmitWrapper = styled.div`
@@ -59,12 +70,18 @@ const Submit = styled.button`
     background-color: #b1c8cd;
     font-size: 2rem;
     font-weight: bold;
+    border-style: none;
+    box-shadow: inset -0.8125rem -1rem 1rem 0rem rgba(0, 0, 0, 0.1);
 
-    @media screen and (max-width: 560px) {
-        font-size: 1rem;
+    &:active {
+        box-shadow: inset 1rem 1rem 1rem 0rem rgba(0, 0, 0, 0.1);
+    }
+
+    @media screen and (max-width: 768px) {
         height: 5rem;
         width: 10rem;
-        border-radius: 1rem;
+        border-radius: 0.8rem;
+        font-size: 1rem;
     }
 `
 
@@ -72,13 +89,14 @@ const TakeChallenge = () => {
     const location = useLocation().pathname
     const globalContext = useContext(GlobalContext)
     const { setCurrentPath }: any = globalContext
+    const [githubIDErr, setGithubIDErr] = useState(false)
+    const [emailErr, setEmailErr] = useState(false)
+    const [submitBtnText, setSubmitBtnText] = useState('接受挑战')
+
     const [formData, setFormData] = useState({
         github_id: '',
         email: ''
     })
-    const [githubIDErr, setGithubIDErr] = useState(false)
-    const [emailErr, setEmailErr] = useState(false)
-    const [submitBtnText, setSubmitBtnText] = useState('接受挑战')
 
     //防止子组件更新时同时去更新父组件
     useEffect(() => {
@@ -113,48 +131,50 @@ const TakeChallenge = () => {
                     console.log('data', data)
                 }}
             >
-                <Container>
-                    {!githubIDErr ? <Text>你的GitHub ID是？</Text> : <ErrMsg>GitHub ID格式错啦！</ErrMsg>}
-                    <Input
-                        value={formData.github_id}
-                        onBlur={evt => {
-                            setGithubIDErr(false)
-                            if (!validateGithubID(evt.currentTarget.value)) setGithubIDErr(true)
-                        }}
-                        onFocus={() => {
-                            setGithubIDErr(false)
-                            setSubmitBtnText('接受挑战')
-                        }}
-                        onChange={evt => {
-                            setFormData({
-                                ...formData,
-                                github_id: evt.target.value
-                            })
-                        }}
-                    />
+                <Wrapper>
+                    <Container>
+                        {!githubIDErr ? <Text>你的GitHub ID是？</Text> : <ErrMsg>GitHub ID格式错啦！</ErrMsg>}
+                        <Input
+                            value={formData.github_id}
+                            onBlur={evt => {
+                                setGithubIDErr(false)
+                                if (!validateGithubID(evt.currentTarget.value)) setGithubIDErr(true)
+                            }}
+                            onFocus={() => {
+                                setGithubIDErr(false)
+                                setSubmitBtnText('接受挑战')
+                            }}
+                            onChange={evt => {
+                                setFormData({
+                                    ...formData,
+                                    github_id: evt.target.value
+                                })
+                            }}
+                        />
 
-                    {!emailErr ? <Text>你的邮箱是？</Text> : <ErrMsg>邮箱格式错啦！</ErrMsg>}
-                    <Input
-                        value={formData.email}
-                        onBlur={evt => {
-                            setEmailErr(false)
-                            if (!validateEmail(evt.currentTarget.value)) setEmailErr(true)
-                        }}
-                        onFocus={() => {
-                            setEmailErr(false)
-                            setSubmitBtnText('接受挑战')
-                        }}
-                        onChange={evt => {
-                            setFormData({
-                                ...formData,
-                                email: evt.target.value
-                            })
-                        }}
-                    />
-                    <SubmitWrapper>
-                        <Submit>{submitBtnText}</Submit>
-                    </SubmitWrapper>
-                </Container>
+                        {!emailErr ? <Text>你的邮箱是？</Text> : <ErrMsg>邮箱格式错啦！</ErrMsg>}
+                        <Input
+                            value={formData.email}
+                            onBlur={evt => {
+                                setEmailErr(false)
+                                if (!validateEmail(evt.currentTarget.value)) setEmailErr(true)
+                            }}
+                            onFocus={() => {
+                                setEmailErr(false)
+                                setSubmitBtnText('接受挑战')
+                            }}
+                            onChange={evt => {
+                                setFormData({
+                                    ...formData,
+                                    email: evt.target.value
+                                })
+                            }}
+                        />
+                        <SubmitWrapper>
+                            <Submit>{submitBtnText}</Submit>
+                        </SubmitWrapper>
+                    </Container>
+                </Wrapper>
             </form>
         </TypeArea>
     )

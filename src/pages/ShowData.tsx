@@ -1,3 +1,5 @@
+//TODO:想做个渲染历史提交数据的页面，但是好懒，目前这个有问题
+
 import { GlobalContext } from '../App'
 import { useContext, useEffect, useState, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
@@ -36,7 +38,7 @@ const ShowData = () => {
 
     useEffect(() => {
         getTakeChallengeData()
-    }, [flag])
+    })
 
     return (
         <TypeArea>

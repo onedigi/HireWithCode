@@ -1,4 +1,5 @@
 import './App.css'
+import 'github-markdown-css'
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Welcome from './pages/Welcome'
 import Introduce from './pages/Introduce'
@@ -7,6 +8,14 @@ import { useState, createContext } from 'react'
 import TakeChallenge from './pages/TakeChallenge'
 import FinishChallenge from './pages/FinishChallenge'
 import ShowData from './pages/ShowData'
+import styled from 'styled-components'
+
+//当前窗口宽度
+const windowsWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+
+const Wrapper = styled.div`
+    display: flex;
+`
 
 //全局上下文
 export const GlobalContext = createContext(undefined)
@@ -22,20 +31,22 @@ function App() {
 
     return (
         /* 对象注入处，将需要注入的对象填写在value内 */
-        <GlobalProvider value={{ currentPath, setCurrentPath }}>
-            {currentPath === '/welcome' ? null : <SideMenu />}
-            <HashRouter>
-                <Routes>
-                    <Route path='/welcome' element={<Welcome />} />
-                    <Route path='/introduce' element={<Introduce />} />
-                    <Route path='/take_challenge' element={<TakeChallenge />} />
-                    <Route path='/finish_challenge' element={<FinishChallenge />} />
-                    <Route path='/show_data' element={<ShowData />} />
+        <GlobalProvider value={{ currentPath, setCurrentPath, windowsWidth }}>
+            <Wrapper>
+                {currentPath === '/welcome' ? null : <SideMenu />}
+                <HashRouter>
+                    <Routes>
+                        <Route path='/welcome' element={<Welcome />} />
+                        <Route path='/introduce' element={<Introduce />} />
+                        <Route path='/take_challenge' element={<TakeChallenge />} />
+                        <Route path='/finish_challenge' element={<FinishChallenge />} />
+                        <Route path='/show_data' element={<ShowData />} />
 
-                    <Route path='/' element={<Navigate replace to='/welcome' />} />
-                    <Route path='*' element={<Navigate replace to='/welcome' />} />
-                </Routes>
-            </HashRouter>
+                        <Route path='/' element={<Navigate replace to='/welcome' />} />
+                        <Route path='*' element={<Navigate replace to='/welcome' />} />
+                    </Routes>
+                </HashRouter>
+            </Wrapper>
         </GlobalProvider>
     )
 }

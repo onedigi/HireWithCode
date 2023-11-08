@@ -1,27 +1,34 @@
-import TypeArea from '../components/TypeArea'
 import { GlobalContext } from '../App'
 import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { supabase } from '../clients/supabase'
 import { validateURL } from '../utils/validate'
+import TypeArea from '../components/TypeArea'
 
-const Container = styled.div`
-    margin-top: 10rem;
+const Wrapper = styled.div`
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
 
-    @media screen and (max-width: 840px) {
-        margin-top: 0;
+const Container = styled.div`
+    width: 60vw;
+
+    @media screen and (max-width: 768px) {
+        width: 75vw;
     }
 `
+
 const Text = styled.p`
     font-size: 2.5rem;
     font-weight: bold;
     margin: 0;
     padding: 0;
 
-    @media screen and (max-width: 560px) {
+    @media screen and (max-width: 768px) {
         font-size: 1.5rem;
     }
 `
@@ -33,16 +40,22 @@ const ErrMsg = styled.p`
     padding: 0;
     color: red;
 
-    @media screen and (max-width: 560px) {
+    @media screen and (max-width: 768px) {
         font-size: 1.5rem;
     }
 `
 
 const Input = styled.input`
     height: 3rem;
-    width: 96%;
+    width: 100%;
     font-size: 2rem;
     margin-bottom: 5rem;
+    background-color: transparent;
+
+    @media screen and (max-width: 768px) {
+        height: 2rem;
+        font-size: 1.5rem;
+    }
 `
 
 const SubmitWrapper = styled.div`
@@ -57,12 +70,18 @@ const Submit = styled.button`
     background-color: #b1c8cd;
     font-size: 2rem;
     font-weight: bold;
+    border-style: none;
+    box-shadow: inset -0.8125rem -1rem 1rem 0rem rgba(0, 0, 0, 0.1);
 
-    @media screen and (max-width: 560px) {
-        font-size: 1rem;
+    &:active {
+        box-shadow: inset 1rem 1rem 1rem 0rem rgba(0, 0, 0, 0.1);
+    }
+
+    @media screen and (max-width: 768px) {
         height: 5rem;
         width: 10rem;
-        border-radius: 1rem;
+        border-radius: 0.8rem;
+        font-size: 1rem;
     }
 `
 
@@ -70,13 +89,14 @@ const FinishChallenge = () => {
     const location = useLocation().pathname
     const globalContext = useContext(GlobalContext)
     const { setCurrentPath }: any = globalContext
+    const [githubURLErr, setGithubURLErr] = useState(false)
+    const [vercelURLErr, setVercelURLErr] = useState(false)
+    const [submitBtnText, setSubmitBtnText] = useState('提交作品')
+
     const [formData, setFormData] = useState({
         github_url: '',
         vercel_url: ''
     })
-    const [githubURLErr, setGithubURLErr] = useState(false)
-    const [vercelURLErr, setVercelURLErr] = useState(false)
-    const [submitBtnText, setSubmitBtnText] = useState('提交作品')
 
     //防止子组件更新时同时去更新父组件
     useEffect(() => {
@@ -111,48 +131,54 @@ const FinishChallenge = () => {
                     console.log('data', data)
                 }}
             >
-                <Container>
-                    {!githubURLErr ? <Text>你的GitHub仓库URL是？</Text> : <ErrMsg>GitHub仓库URL格式错啦！</ErrMsg>}
-                    <Input
-                        value={formData.github_url}
-                        onBlur={evt => {
-                            setGithubURLErr(false)
-                            if (!validateURL(evt.currentTarget.value)) setGithubURLErr(true)
-                        }}
-                        onFocus={() => {
-                            setGithubURLErr(false)
-                            setSubmitBtnText('提交作品')
-                        }}
-                        onChange={evt => {
-                            setFormData({
-                                ...formData,
-                                github_url: evt.target.value
-                            })
-                        }}
-                    />
-                    {!vercelURLErr ? <Text>你的Vercel在线体验地址是？</Text> : <ErrMsg>Vercel地址格式错啦！</ErrMsg>}
-                    <Input
-                        value={formData.vercel_url}
-                        onBlur={evt => {
-                            setVercelURLErr(false)
-                            if (!validateURL(evt.currentTarget.value)) setVercelURLErr(true)
-                        }}
-                        onFocus={() => {
-                            setVercelURLErr(false)
-                            setSubmitBtnText('提交作品')
-                        }}
-                        onChange={evt => {
-                            setFormData({
-                                ...formData,
-                                vercel_url: evt.target.value
-                            })
-                        }}
-                    />
+                <Wrapper>
+                    <Container>
+                        {!githubURLErr ? <Text>你的GitHub仓库URL是？</Text> : <ErrMsg>GitHub仓库URL格式错啦！</ErrMsg>}
+                        <Input
+                            value={formData.github_url}
+                            onBlur={evt => {
+                                setGithubURLErr(false)
+                                if (!validateURL(evt.currentTarget.value)) setGithubURLErr(true)
+                            }}
+                            onFocus={() => {
+                                setGithubURLErr(false)
+                                setSubmitBtnText('提交作品')
+                            }}
+                            onChange={evt => {
+                                setFormData({
+                                    ...formData,
+                                    github_url: evt.target.value
+                                })
+                            }}
+                        />
+                        {!vercelURLErr ? (
+                            <Text>你的Vercel在线体验地址是？</Text>
+                        ) : (
+                            <ErrMsg>Vercel地址格式错啦！</ErrMsg>
+                        )}
+                        <Input
+                            value={formData.vercel_url}
+                            onBlur={evt => {
+                                setVercelURLErr(false)
+                                if (!validateURL(evt.currentTarget.value)) setVercelURLErr(true)
+                            }}
+                            onFocus={() => {
+                                setVercelURLErr(false)
+                                setSubmitBtnText('提交作品')
+                            }}
+                            onChange={evt => {
+                                setFormData({
+                                    ...formData,
+                                    vercel_url: evt.target.value
+                                })
+                            }}
+                        />
 
-                    <SubmitWrapper>
-                        <Submit>{submitBtnText}</Submit>
-                    </SubmitWrapper>
-                </Container>
+                        <SubmitWrapper>
+                            <Submit>{submitBtnText}</Submit>
+                        </SubmitWrapper>
+                    </Container>
+                </Wrapper>
             </form>
         </TypeArea>
     )

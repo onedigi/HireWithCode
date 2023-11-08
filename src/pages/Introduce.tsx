@@ -1,9 +1,9 @@
 import MD from 'markdown-to-jsx'
 import { rawMD } from '../assets/rawMD'
-import TypeArea from '../components/TypeArea'
 import { GlobalContext } from '../App'
 import { useContext, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import TypeArea from '../components/TypeArea'
 
 const Introduce = () => {
     const location = useLocation().pathname
@@ -17,7 +17,9 @@ const Introduce = () => {
 
     return (
         <TypeArea>
-            <MD>{rawMD}</MD>
+            <div className='markdown-body'>
+                <MD>{rawMD}</MD>
+            </div>
         </TypeArea>
     )
 }

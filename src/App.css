@@ -1,8 +1,8 @@
 body {
-    min-width: 316px;
+    margin: 0;
 }
 
-@keyframes rotate-animation-left {
+@keyframes side-menu-btn-icon-open-animation {
     0% {
         transform: rotateY(180deg);
     }
@@ -11,7 +11,7 @@ body {
     }
 }
 
-@keyframes rotate-animation-right {
+@keyframes side-menu-btn-icon-close-animation {
     0% {
         transform: rotateY(0deg);
     }
@@ -20,41 +20,75 @@ body {
     }
 }
 
-.rotate-animation-left-class {
-    animation: rotate-animation-left 0.5s forwards;
+.side-menu-btn-icon-open-animation-class {
+    animation: side-menu-btn-icon-open-animation 0.5s forwards;
 }
 
-.rotate-animation-right-class {
-    animation: rotate-animation-right 0.5s forwards;
+.side-menu-btn-icon-close-animation-class {
+    animation: side-menu-btn-icon-close-animation 0.5s forwards;
 }
 
-@keyframes move-animation-left {
+@keyframes side-menu-items-open-animation {
     0% {
-        left: 0;
+        opacity: 0;
     }
     100% {
-        left: -20rem;
+        opacity: 1;
     }
 }
 
-@keyframes move-animation-right {
+@keyframes side-menu-items-close-animation {
     0% {
-        left: -20rem;
+        opacity: 1;
     }
     100% {
-        left: 0;
+        opacity: 0;
     }
 }
 
-.move-animation-left-class {
-    animation: move-animation-left 0.5s forwards;
+.side-menu-items-open-animation-class {
+    animation: side-menu-items-open-animation 0.5s forwards;
 }
 
-.move-animation-right-class {
-    animation: move-animation-right 0.5s forwards;
+.side-menu-items-close-animation-class {
+    animation: side-menu-items-close-animation 0.5s forwards;
+}
+
+@keyframes side-menu-open-animation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 20rem;
+    }
+}
+
+@keyframes side-menu-close-animation {
+    0% {
+        width: 20rem;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+.side-menu-open-animation-class {
+    animation: side-menu-open-animation 0.5s forwards;
+}
+
+.side-menu-close-animation-class {
+    animation: side-menu-close-animation 0.5s forwards;
 }
 
 .text-underline {
     text-decoration: underline;
     text-underline-offset: 0.5rem;
+}
+
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 2.8125rem;
 }
