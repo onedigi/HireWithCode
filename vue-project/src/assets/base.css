@@ -86,15 +86,26 @@ body {
 }
 blockquote {
   background-color: #FAFAFA;
-  padding: 0 1.5625rem;
+  padding: 0 .25rem;
   position: relative;
 }
 blockquote::before{
   content: "";
   background-color: #FAFAFA;
-  border-left: .4375rem solid #E6E6E6;
+  border-left: .07rem solid #E6E6E6;
   position: absolute;
   height: 100%;
   top: 0;
   left: 0;
 }
+/* @media (max-width: 768px) {
+blockquote {
+    padding: 0 1.5625rem;
+  }
+
+  blockquote::before {
+    border-left: .4375rem solid #E6E6E6;
+    position: absolute;
+    height: 100%;
+  }
+} */

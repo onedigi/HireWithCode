@@ -107,75 +107,46 @@ async function sumbit() {
     height: 90vh;
     background: url('@/assets/bg_two.jpg') no-repeat;
     background-size: 90% 100%;
-    border-radius: 1.0417rem;
+    border-radius: 0.1667rem;
     background-color: #fff;
   }
   .input-container {
     transform: translateX(-60%);
   }
   .btn {
-    width: 7.8125rem;
+    min-width: 1.25rem;
   }
   .input-container input[type='text']:focus ~ .label,
   .input-container input[type='text']:valid ~ .label {
     color: #333;
   }
   .input-container .underline {
-    bottom: 0.75rem;
-    height: 0.1563rem;
-  }
-}
-@media (max-width: 768px) {
-  .box-content {
-    width: 100%;
-    min-height: 100vh;
-    background: url('@/assets/bg_phone.png') no-repeat;
-    background-size: 100% 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .input-container {
-    transform: translateX(0px);
-  }
-  .btn {
-    width: 10.375rem;
-  }
-  .input-container input[type='text']:focus ~ .label,
-  .input-container input[type='text']:valid ~ .label {
-    color: #fff;
-  }
-  .input-container input[type='text'] {
-    color: #fff;
-  }
-  .input-container .underline {
-    bottom: 0.9rem;
-    height: 0.3rem;
+    bottom: 0.12rem;
+    height: 0.025rem;
   }
 }
 .input-container {
-  min-width: 21.875rem;
-  height: 3.125rem;
+  min-width: 3.5rem;
+  height: 0.5rem;
   position: relative;
 }
 .input-container:first-child {
-  margin-bottom: 15.625rem;
+  margin-bottom: 2.5rem;
 }
 .input-container input[type='text'] {
-  font-size: 1.125rem;
+  font-size: 0.18rem;
   width: 100%;
   border: none;
-  border-bottom: 0.1875rem solid #ccc;
-  padding: 0.4167rem 0;
+  border-bottom: 0.03rem solid #ccc;
+  padding: 0.0667rem 0;
   background-color: transparent;
   outline: none;
 }
 
 .input-container .label {
-  font-size: 1.5625rem;
+  font-size: 0.25rem;
   position: absolute;
-  top: -0.3125rem;
+  top: -0.05rem;
   left: 0;
   color: #ccc;
   transition: all 0.3s ease;
@@ -184,8 +155,8 @@ async function sumbit() {
 
 .input-container input[type='text']:focus ~ .label,
 .input-container input[type='text']:valid ~ .label {
-  top: -1.5rem;
-  font-size: 1.125rem;
+  top: -0.24rem;
+  font-size: 0.18rem;
 }
 
 .input-container .underline {
@@ -202,14 +173,14 @@ async function sumbit() {
   transform: scaleX(1);
 }
 .btn {
-  height: 2.3438rem;
+  height: 0.375rem;
   margin: 0 auto;
-  margin-top: 7.5rem;
+  margin-top: 1.2rem;
   background: black;
   color: white;
   border: none;
-  border-radius: 0.625rem;
-  font-size: 1.0417rem;
+  border-radius: 0.1rem;
+  font-size: 0.1667rem;
   font-weight: bold;
   cursor: pointer;
   position: relative;
@@ -238,5 +209,62 @@ button:hover:after {
   transform: skewX(-45deg) scale(1, 1);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+}
+@media (max-width: 768px) {
+  .box-content {
+    width: 100%;
+    min-height: 100vh;
+    background: url('@/assets/bg_phone.png') no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .input-container {
+    transform: translateX(0px);
+    min-width: 3.5rem;
+    height: 0.5rem;
+  }
+  .btn {
+    width: 1.66rem;
+    height: 0.375rem;
+    margin-top: 1.2rem;
+    border-radius: 0.1rem;
+    font-size: 0.1667rem;
+  }
+
+  .input-container .underline {
+    bottom: 0.11rem;
+    height: 0.048rem;
+  }
+  .input-container:first-child {
+    margin-bottom: 2.5rem;
+  }
+  .input-container input[type='text'] {
+    font-size: 0.18rem;
+    width: 100%;
+    border-bottom: 0.03rem solid #ccc;
+    padding: 0.0667rem 0;
+    color: #fff;
+  }
+
+  .input-container .label {
+    font-size: 0.25rem;
+    top: -0.05rem;
+    left: 0;
+  }
+
+  .input-container input[type='text']:focus ~ .label,
+  .input-container input[type='text']:valid ~ .label {
+    top: -0.24rem;
+    font-size: 0.18rem;
+  }
+
+  .input-container .underline {
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
 }
 </style>

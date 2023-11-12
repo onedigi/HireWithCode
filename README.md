@@ -2,7 +2,7 @@
  * @Author: laiminqi 2804627211@qq.com
  * @Date: 2023-11-06 23:33:24
  * @LastEditors: laiminqi 2804627211@qq.com
- * @LastEditTime: 2023-11-11 15:27:08
+ * @LastEditTime: 2023-11-12 23:39:47
  * @FilePath: \studying-project\interview\HireWithCode\README.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -34,5 +34,3 @@
 我们会审查每一个 PR，并以此作为面试的一部分。我们期待看到你的创意和技术实力！
 
 祝你好运！
-
-我的在线部署地址：https://vue-project-9kfh531pk-linguistic-techs-projects.vercel.app

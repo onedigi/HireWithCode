@@ -32,6 +32,17 @@ content.value = contends
 function goAccept() {
   router.push({ name: 'challenge', params: { type: 'begin' } })
 }
+const flag = navigator.userAgent.match(
+  /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+)
+let imgW = ref('5.67rem')
+let imgH = ref('5.67rem')
+let text = ref('0.25rem')
+if (flag) {
+  imgW.value = '1.6rem'
+  text.value = '0.5rem'
+  imgH.value = '1.6rem'
+}
 </script>
 <style lang="less" scoped>
 .about-container {
@@ -39,44 +50,43 @@ function goAccept() {
   min-height: 100vh;
   display: flex;
   justify-content: space-between;
-  padding: 0 2.6042rem;
+  padding: 0 0.24rem;
   /deep/ input {
-    width: 0.8125rem;
-    height: 0.8125rem;
-    transform: translateY(0.0625rem);
+    width: 0.13rem;
+    height: 0.13rem;
   }
 }
 .about-img {
-  width: 35.4167rem;
-  height: 35.4167rem;
+  width: v-bind(imgW);
+  height: v-bind(imgH);
 }
 
 .main {
-  width: 61.4583rem;
+  width: 9.84rem;
   background-color: #fff;
-  padding: 0 1.5625rem;
-  border-radius: 1.0417rem;
-  margin: 1.5625rem 0 3.125rem 0;
+  padding: 0 0.25rem;
+  border-radius: 0.17rem;
+  margin: 0.25rem 0 0.5rem 0;
 }
 .btn {
   --primary-color: #645bff;
   --secondary-color: #fff;
   --hover-color: #111;
-  --arrow-width: 0.5208rem;
-  --arrow-stroke: 0.1042rem;
-  margin: 2.6042rem auto 1.0417rem;
+  --arrow-width: 0.084rem;
+  --arrow-stroke: 0.017rem;
+  margin: 0.42rem auto 0.16rem;
   box-sizing: border-box;
   border: 0;
-  border-radius: 1.25rem;
+  border-radius: 0.2rem;
   color: var(--secondary-color);
-  padding: 1.1rem 2.5rem;
+  padding: 0.1rem 0.2rem;
   background: var(--primary-color);
   display: flex;
   transition: 0.2s background;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.096rem;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.16rem;
 }
 
 .btn .arrow-wrapper {
@@ -86,7 +96,7 @@ function goAccept() {
 }
 
 .btn .arrow {
-  margin-top: 0.0521rem;
+  margin-top: 0.0083rem;
   width: var(--arrow-width);
   background: var(--primary-color);
   height: var(--arrow-stroke);
@@ -101,10 +111,10 @@ function goAccept() {
   border: solid var(--secondary-color);
   border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
   display: inline-block;
-  top: -0.1563rem;
-  right: 0.1563rem;
+  top: -0.025rem;
+  right: 0.05rem;
   transition: 0.2s;
-  padding: 0.2575rem;
+  padding: 0.04rem;
   transform: rotate(-45deg);
 }
 
@@ -118,6 +128,50 @@ function goAccept() {
 
 .btn:hover .arrow:before {
   right: 0;
-  top: -0.1875rem;
+  top: -0.03rem;
 }
+// @media (max-width: 4800px) {
+//   .about-img {
+//     width: 5.6667rem;
+//     height: 5.6667rem;
+//   }
+//   .main {
+//     width: 9.8333rem;
+//     padding: 0 0.25rem;
+//     border-radius: 0.1667rem;
+//     margin: 0.25rem 0 0.5rem 0;
+//   }
+//   .btn {
+//     --arrow-width: 0.0833rem;
+//     --arrow-stroke: 0.0167rem;
+//     margin: 0.4167rem auto 0.1667rem;
+//     border: 0;
+//     border-radius: 0.2rem;
+//     gap: 0.096rem;
+//     font-size: 0.16rem;
+//   }
+
+//   .btn:hover .arrow:before {
+//     right: 0;
+//     top: -0.03rem;
+//   }
+//   .btn .arrow {
+//     margin-top: 0.0083rem;
+//     width: var(--arrow-width);
+//     height: var(--arrow-stroke);
+//   }
+
+//   .btn .arrow::before {
+//     border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+//     top: -0.025rem;
+//     right: 0.025rem;
+//     padding: 0.0412rem;
+//   }
+//   p {
+//   }
+//   h1 {
+//   }
+//   h2 {
+//   }
+// }
 </style>

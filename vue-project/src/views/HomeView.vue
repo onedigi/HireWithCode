@@ -2,7 +2,7 @@
  * @Author: laiminqi 2804627211@qq.com
  * @Date: 2023-11-09 10:49:14
  * @LastEditors: laiminqi 2804627211@qq.com
- * @LastEditTime: 2023-11-10 00:12:23
+ * @LastEditTime: 2023-11-12 23:31:06
  * @FilePath: \studying-project\interview\HireWithCode\vue-project\src\views\HomeView.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -15,10 +15,21 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const seconds = 2000
+const flag = navigator.userAgent.match(
+  /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+)
+let logoW = ref('3.5rem')
+let logoH = ref('3.5rem')
+let text = ref('0.25rem')
+if (flag) {
+  logoW.value = '5.5rem'
+  text.value = '0.3rem'
+  logoH.value = '5.5rem'
+}
 onMounted(() => {
   setTimeout(() => {
     router.push({ name: 'about' })
@@ -39,16 +50,18 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 0 0.8rem;
+  width: 100%;
   .container-text {
-    margin-top: 1.5625rem;
-    font-size: 1.5625rem;
+    transform: translateY(-1.5rem);
+    font-size: v-bind(text);
     text-align: center;
     position: relative;
-    z-index: 1;
+    z-index: 3;
   }
   .logo {
-    width: 15.625rem;
-    height: 15.625rem;
+    width: v-bind(logoW);
+    height: v-bind(logoH);
   }
 }
 .container::before {

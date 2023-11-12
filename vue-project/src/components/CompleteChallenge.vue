@@ -137,35 +137,36 @@ async function sumbit() {
 }
 .input-container {
   position: relative;
-  margin: 2.6042rem auto;
-  min-width: 18.75rem;
+  margin: 0.4167rem auto;
+  min-width: 3rem;
+  z-index: 1;
 }
 
 .input-container input[type='text'] {
-  font-size: 1.0417rem;
+  font-size: 0.1667rem;
   min-width: 100%;
   width: auto;
   border: none;
-  border-bottom: 0.125rem solid #fff;
-  padding: 0.3125rem 0;
+  border-bottom: 0.02rem solid #fff;
+  padding: 0.05rem 0;
   background-color: transparent;
   outline: none;
 }
 
 .input-container .label {
   position: absolute;
-  top: -0.3125rem;
+  top: -0.05rem;
   left: 0;
-  color: #fff;
+  color: #b19898;
   transition: all 0.3s ease;
   pointer-events: none;
-  font-size: 1.1875rem;
+  font-size: 0.19rem;
 }
 
 .input-container input[type='text']:focus ~ .label,
 .input-container input[type='text']:valid ~ .label {
-  top: -1.875rem;
-  font-size: 1rem;
+  top: -0.3rem;
+  font-size: 0.16rem;
   color: #333;
 }
 
@@ -173,7 +174,7 @@ async function sumbit() {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 0.125rem;
+  height: 0.02rem;
   width: 100%;
   background-color: #333;
   transform: scaleX(0);
@@ -185,14 +186,14 @@ async function sumbit() {
   transform: scaleX(1);
 }
 .btn {
-  width: 7.8125rem;
-  height: 2.3438rem;
+  min-width: 1.25rem;
+  height: 0.375rem;
   margin: 0 auto;
   background: black;
   color: white;
   border: none;
-  border-radius: 0.625rem;
-  font-size: 1.0417rem;
+  border-radius: 0.1rem;
+  font-size: 0.1667rem;
   font-weight: bold;
   cursor: pointer;
   position: relative;
@@ -222,4 +223,40 @@ button:hover:after {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+// @media (max-width: 4800px) {
+//   .input-container {
+//     position: relative;
+//     margin: 0.4167rem auto;
+//     min-width: 3rem;
+//   }
+//   .btn {
+//     width: 1.25rem;
+//     height: 0.375rem;
+//     border-radius: 0.1rem;
+//     font-size: 0.1667rem;
+//   }
+//   .input-container input[type='text'] {
+//     font-size: 0.1667rem;
+//     min-width: 100%;
+//     width: auto;
+//     border-bottom: 0.02rem solid #fff;
+//     padding: 0.05rem 0;
+//   }
+
+//   .input-container .label {
+//     top: -0.05rem;
+//     font-size: 0.19rem;
+//   }
+
+//   .input-container input[type='text']:focus ~ .label,
+//   .input-container input[type='text']:valid ~ .label {
+//     top: -0.3rem;
+//     font-size: 0.16rem;
+//   }
+
+//   .input-container .underline {
+//     height: 0.02rem;
+//     width: 100%;
+//   }
+// }
 </style>

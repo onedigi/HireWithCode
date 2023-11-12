@@ -2,7 +2,7 @@
  * @Author: laiminqi 2804627211@qq.com
  * @Date: 2023-11-10 01:36:15
  * @LastEditors: laiminqi 2804627211@qq.com
- * @LastEditTime: 2023-11-10 23:38:49
+ * @LastEditTime: 2023-11-12 23:33:44
  * @FilePath: \studying-project\interview\HireWithCode\vue-project\src\views\LoadingView.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -67,30 +67,33 @@ function toComplete() {
   background: linear-gradient(0deg, rgb(173, 241, 255), rgb(225, 255, 199));
 }
 .loading-text {
-  font-size: 1.5625rem;
-  line-height: 2.3438rem;
+  font-size: 0.25rem;
+  line-height: 0.375rem;
   font-weight: bold;
-  margin-bottom: 1.5625rem;
+  margin-bottom: 0.25rem;
+  position: relative;
+  z-index: 1;
 }
 .hourglassBackground {
   position: relative;
   background-color: rgb(71, 60, 60);
-  height: 8.125rem;
-  width: 8.125rem;
+  height: 1.3rem;
+  width: 1.3rem;
   border-radius: 50%;
-  margin: 1.875rem auto;
+  margin: 0.3rem auto;
+  z-index: 1;
 }
 
 .hourglassContainer {
   position: absolute;
-  top: 1.875rem;
-  left: 2.5rem;
-  width: 3.125rem;
-  height: 4.375rem;
+  top: 0.3rem;
+  left: 0.4rem;
+  width: 0.5rem;
+  height: 0.7rem;
   -webkit-animation: hourglassRotate 2s ease-in 0s infinite;
   animation: hourglassRotate 2s ease-in 0s infinite;
   transform-style: preserve-3d;
-  perspective: 62.5rem;
+  perspective: 10rem;
 }
 
 .hourglassContainer div,
@@ -132,11 +135,11 @@ function toComplete() {
 }
 
 .hourglassCapTop:before {
-  top: -1.5625rem;
+  top: -0.25rem;
 }
 
 .hourglassCapTop:after {
-  top: -1.25rem;
+  top: -0.2rem;
 }
 
 .hourglassCapBottom {
@@ -144,31 +147,31 @@ function toComplete() {
 }
 
 .hourglassCapBottom:before {
-  bottom: -1.5625rem;
+  bottom: -0.25rem;
 }
 
 .hourglassCapBottom:after {
-  bottom: -1.25rem;
+  bottom: -0.2rem;
 }
 
 .hourglassGlassTop {
   transform: rotateX(90deg);
   position: absolute;
-  top: -1rem;
-  left: 0.1875rem;
+  top: -0.16rem;
+  left: 0.03rem;
   border-radius: 50%;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 0.44rem;
+  height: 0.44rem;
   background-color: #999999;
 }
 
 .hourglassGlass {
-  perspective: 6.25rem;
+  perspective: 1rem;
   position: absolute;
-  top: 2rem;
-  left: 1.25rem;
-  width: 0.625rem;
-  height: 0.375rem;
+  top: 0.32rem;
+  left: 0.2rem;
+  width: 0.1rem;
+  height: 0.06rem;
   background-color: #999999;
   opacity: 0.5;
 }
@@ -179,19 +182,19 @@ function toComplete() {
   display: block;
   position: absolute;
   background-color: #999999;
-  left: -1.0625rem;
-  width: 2.75rem;
-  height: 1.75rem;
+  left: -0.17rem;
+  width: 0.44rem;
+  height: 0.28rem;
 }
 
 .hourglassGlass:before {
-  top: -1.6875rem;
-  border-radius: 0 0 1.5625rem 1.5625rem;
+  top: -0.27rem;
+  border-radius: 0 0 0.25rem 0.25rem;
 }
 
 .hourglassGlass:after {
-  bottom: -1.6875rem;
-  border-radius: 1.5625rem 1.5625rem 0 0;
+  bottom: -0.27rem;
+  border-radius: 0.25rem 0.25rem 0 0;
 }
 
 .hourglassCurves:before,
@@ -199,20 +202,20 @@ function toComplete() {
   content: '';
   display: block;
   position: absolute;
-  top: 2rem;
-  width: 0.375rem;
-  height: 0.375rem;
+  top: 0.32rem;
+  width: 0.06rem;
+  height: 0.06rem;
   border-radius: 50%;
   background-color: #333;
   animation: hideCurves 2s ease-in 0s infinite;
 }
 
 .hourglassCurves:before {
-  left: 0.9375rem;
+  left: 0.15rem;
 }
 
 .hourglassCurves:after {
-  left: 1.8125rem;
+  left: 0.29rem;
 }
 
 @-webkit-keyframes hideCurves {
@@ -263,8 +266,8 @@ function toComplete() {
   content: '';
   display: block;
   position: absolute;
-  left: 1.5rem;
-  width: 0.1875rem;
+  left: 0.24rem;
+  width: 0.03rem;
   background-color: white;
   -webkit-animation: sandStream1 2s ease-in 0s infinite;
   animation: sandStream1 2s ease-in 0s infinite;
@@ -274,65 +277,65 @@ function toComplete() {
   content: '';
   display: block;
   position: absolute;
-  top: 2.25rem;
-  left: 1.1875rem;
-  border-left: 0.375rem solid transparent;
-  border-right: 0.375rem solid transparent;
-  border-bottom: 0.375rem solid #fff;
+  top: 0.36rem;
+  left: 0.19rem;
+  border-left: 0.06rem solid transparent;
+  border-right: 0.06rem solid transparent;
+  border-bottom: 0.06rem solid #fff;
   animation: sandStream2 2s ease-in 0s infinite;
 }
 
 @-webkit-keyframes sandStream1 {
   0% {
     height: 0;
-    top: 2.1875rem;
+    top: 0.35rem;
   }
 
   50% {
     height: 0;
-    top: 2.8125rem;
+    top: 0.45rem;
   }
 
   60% {
-    height: 2.1875rem;
-    top: 0.5rem;
+    height: 0.35rem;
+    top: 0.08rem;
   }
 
   85% {
-    height: 2.1875rem;
-    top: 0.5rem;
+    height: 0.35rem;
+    top: 0.08rem;
   }
 
   100% {
     height: 0;
-    top: 0.5rem;
+    top: 0.08rem;
   }
 }
 
 @keyframes sandStream1 {
   0% {
     height: 0;
-    top: 2.1875rem;
+    top: 0.35rem;
   }
 
   50% {
     height: 0;
-    top: 2.8125rem;
+    top: 0.45rem;
   }
 
   60% {
-    height: 2.1875rem;
-    top: 0.5rem;
+    height: 0.35rem;
+    top: 0.08rem;
   }
 
   85% {
-    height: 2.1875rem;
-    top: 0.5rem;
+    height: 0.35rem;
+    top: 0.08rem;
   }
 
   100% {
     height: 0;
-    top: 0.5rem;
+    top: 0.08rem;
   }
 }
 
@@ -393,20 +396,20 @@ function toComplete() {
   content: '';
   display: block;
   position: absolute;
-  left: 0.375rem;
+  left: 0.06rem;
   background-color: white;
-  perspective: 31.25rem;
+  perspective: 5rem;
 }
 
 .hourglassSand:before {
-  top: 0.5rem;
-  width: 2.4375rem;
-  border-radius: 0.1875rem 0.1875rem 1.875rem 1.875rem;
+  top: 0.08rem;
+  width: 0.39rem;
+  border-radius: 0.03rem 0.03rem 0.3rem 0.3rem;
   animation: sandFillup 2s ease-in 0s infinite;
 }
 
 .hourglassSand:after {
-  border-radius: 1.875rem 1.875rem 0.1875rem 0.1875rem;
+  border-radius: 0.3rem 0.3rem 0.03rem 0.03rem;
   animation: sandDeplete 2s ease-in 0s infinite;
 }
 
@@ -423,7 +426,7 @@ function toComplete() {
 
   100% {
     opacity: 1;
-    height: 1.0625rem;
+    height: 0.17rem;
   }
 }
 
@@ -440,119 +443,121 @@ function toComplete() {
 
   100% {
     opacity: 1;
-    height: 1.0625rem;
+    height: 0.17rem;
   }
 }
 
 @-webkit-keyframes sandDeplete {
   0% {
     opacity: 0;
-    top: 2.8125rem;
-    height: 1.0625rem;
-    width: 2.375rem;
-    left: 0.375rem;
+    top: 0.45rem;
+    height: 0.17rem;
+    width: 0.38rem;
+    left: 0.06rem;
   }
 
   1% {
     opacity: 1;
-    top: 2.8125rem;
-    height: 1.0625rem;
-    width: 2.375rem;
-    left: 0.375rem;
+    top: 0.45rem;
+    height: 0.17rem;
+    width: 0.38rem;
+    left: 0.06rem;
   }
 
   24% {
     opacity: 1;
-    top: 2.8125rem;
-    height: 1.0625rem;
-    width: 2.375rem;
-    left: 0.375rem;
+    top: 0.45rem;
+    height: 0.17rem;
+    width: 0.38rem;
+    left: 0.06rem;
   }
 
   25% {
     opacity: 1;
-    top: 2.5625rem;
-    height: 1.0625rem;
-    width: 2.375rem;
-    left: 0.375rem;
+    top: 0.41rem;
+    height: 0.17rem;
+    width: 0.38rem;
+    left: 0.06rem;
   }
 
   50% {
     opacity: 1;
-    top: 2.5625rem;
-    height: 1.0625rem;
-    width: 2.375rem;
-    left: 0.375rem;
+    top: 0.41rem;
+    height: 0.17rem;
+    width: 0.38rem;
+    left: 0.06rem;
   }
 
   90% {
     opacity: 1;
-    top: 2.5625rem;
+    top: 0.41rem;
     height: 0;
-    width: 0.625rem;
-    left: 1.25rem;
+    width: 0.1rem;
+    left: 0.2rem;
   }
 }
 
 @keyframes sandDeplete {
   0% {
     opacity: 0;
-    top: 2.8125rem;
-    height: 1.0625rem;
-    width: 2.375rem;
-    left: 0.375rem;
+    top: 0.45rem;
+    height: 0.17rem;
+    width: 0.38rem;
+    left: 0.06rem;
   }
 
   1% {
     opacity: 1;
-    top: 2.8125rem;
-    height: 1.0625rem;
-    width: 2.375rem;
-    left: 0.375rem;
+    top: 0.45rem;
+    height: 0.17rem;
+    width: 0.38rem;
+    left: 0.06rem;
   }
 
   24% {
     opacity: 1;
-    top: 2.8125rem;
-    height: 1.0625rem;
-    width: 2.375rem;
-    left: 0.375rem;
+    top: 0.45rem;
+    height: 0.17rem;
+    width: 0.38rem;
+    left: 0.06rem;
   }
 
   25% {
     opacity: 1;
-    top: 2.5625rem;
-    height: 1.0625rem;
-    width: 2.375rem;
-    left: 0.375rem;
+    top: 0.41rem;
+    height: 0.17rem;
+    width: 0.38rem;
+    left: 0.06rem;
   }
 
   50% {
     opacity: 1;
-    top: 2.5625rem;
-    height: 1.0625rem;
-    width: 2.375rem;
-    left: 0.375rem;
+    top: 0.41rem;
+    height: 0.17rem;
+    width: 0.38rem;
+    left: 0.06rem;
   }
 
   90% {
     opacity: 1;
-    top: 2.5625rem;
+    top: 0.41rem;
     height: 0;
-    width: 0.625rem;
-    left: 1.25rem;
+    width: 0.1rem;
+    left: 0.2rem;
   }
 }
 button {
-  height: 3.125rem;
-  width: 9.375rem;
+  height: 0.5rem;
+  width: 1.5rem;
   background: transparent;
   -webkit-animation: jello-horizontal 0.9s both;
   animation: jello-horizontal 0.9s both;
-  border: 0.125rem solid #016dd9;
+  border: 0.02rem solid #016dd9;
   outline: none;
   color: #016dd9;
-  font-size: 1.0625rem;
+  font-size: 0.17rem;
+  position: relative;
+  z-index: 1;
 }
 
 button:hover {

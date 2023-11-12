@@ -2,7 +2,7 @@
  * @Author: laiminqi 2804627211@qq.com
  * @Date: 2023-11-10 01:46:22
  * @LastEditors: laiminqi 2804627211@qq.com
- * @LastEditTime: 2023-11-11 12:51:06
+ * @LastEditTime: 2023-11-12 23:22:38
  * @FilePath: \studying-project\interview\HireWithCode\vue-project\src\views\CompleteVIew.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -49,5 +49,10 @@
   background: -webkit-linear-gradient(0deg, rgb(173, 241, 255), rgb(225, 255, 199));
 
   background: linear-gradient(0deg, rgb(173, 241, 255), rgb(225, 255, 199));
+}
+h1 {
+  font-size: 0.22rem;
+  position: relative;
+  z-index: 1;
 }
 </style>
